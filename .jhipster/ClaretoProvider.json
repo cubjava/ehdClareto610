@@ -1,0 +1,92 @@
+{
+  "name": "ClaretoProvider",
+  "fields": [
+    {
+      "fieldName": "guid",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "ehdOrderGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ehdEmpi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claretoSearchGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claretoPersonGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ClaretoStatus",
+      "fieldValues": "NEW,RECEIVED,REQUESTED,PENDING,SPECAUTH,DUPLICATE,COMPLETE,NODATA,READY,RETRY_PERSON,RETRY_DOCUMENT,RETRY_UPDATESTATUS,ERROR",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "claretoPersonId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "providerId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "providerName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "providerStatusCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "providerStatusText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "providerStatusDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "lastModifiedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "claretoPerson",
+      "otherEntityRelationshipName": "claretoProvider",
+      "relationshipName": "claretoPerson",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210201194548",
+  "entityTableName": "clareto_provider",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "ehdClareto610",
+  "applications": "*",
+  "microserviceName": "ehdClareto610"
+}

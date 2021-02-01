@@ -1,0 +1,91 @@
+entity ClaretoPerson {
+	guid String required,
+  ehdOrderGuid String required,
+  ehdEmpi String,
+  providerWorkflowGuid String,
+  providerData String,
+  claretoSearchGuid String,
+	status ClaretoStatus required,
+	hipaaDocStoreGuid String,
+	payload String,
+	responseCode String,
+	responseMsg String,
+	claretoStatusCode String,
+	claretoStatusText String,
+	claretoStatusDescription String,
+	retryCount Integer,
+  createdAt Instant required,
+  lastModifiedAt Instant
+}
+
+entity ClaretoProvider {
+	guid String required,
+  ehdOrderGuid String,
+  ehdEmpi String,
+	claretoSearchGuid String,
+	claretoPersonGuid String,
+	status ClaretoStatus required,
+	claretoPersonId Integer,
+	providerId String,
+	providerName String,
+	providerStatusCode String,
+	providerStatusText String,
+	providerStatusDescription String,
+  createdAt Instant required,
+  lastModifiedAt Instant
+}
+
+entity ClaretoOrganization {
+	guid String required,
+  ehdOrderGuid String,
+  ehdEmpi String,
+  claretoSearchGuid String,
+  claretoPersonGuid String,
+  claretoProviderGuid String,
+	status ClaretoStatus required,
+	claretoProviderId Integer,
+	organizationId String,
+	organizationName String,
+	specialAuthDocStoreGuid String,
+	retryCount Integer,
+  createdAt Instant required,
+  lastModifiedAt Instant
+}
+
+entity ClaretoDocument {
+	guid String required,
+  ehdOrderGuid String,
+  ehdEmpi String,
+  claretoSearchGuid String,
+  claretoPersonGuid String,
+  claretoProviderGuid String,
+  claretoDocumentSearchGuid String,
+	status ClaretoStatus required,
+	claretoOrganizationId Integer,
+	documentId String,
+	documentName String,
+	documentType String,
+	documentDescription String,
+	documentStatus String,
+	ccdaDocStoreGuid String,
+	ecmPdfGuid String,
+	retryCount Integer,
+  createdAt Instant required,
+  lastModifiedAt Instant
+}
+
+enum ClaretoStatus {
+	NEW,RECEIVED,REQUESTED,PENDING,SPECAUTH,DUPLICATE,COMPLETE,NODATA,READY,RETRY_PERSON,RETRY_DOCUMENT,RETRY_UPDATESTATUS,ERROR
+}
+
+relationship ManyToOne {
+	ClaretoDocument{claretoOrganization} to ClaretoOrganization,
+	ClaretoOrganization{claretoProvider} to ClaretoProvider,
+	ClaretoProvider{claretoPerson} to ClaretoPerson
+}
+
+// Set pagination options
+paginate all with pagination
+
+// Set service options to all except few
+service all with serviceImpl
