@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ClaretoOrganization.
+    -->
+    <changeSet id="20210201194648-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="clareto_provider_id"
+                                 baseTableName="clareto_organization"
+                                 constraintName="fk_clareto_organization_clareto_provider_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clareto_provider"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,112 @@
+{
+  "name": "ClaretoDocument",
+  "fields": [
+    {
+      "fieldName": "guid",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "ehdOrderGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ehdEmpi",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claretoSearchGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claretoPersonGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claretoProviderGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "claretoDocumentSearchGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ClaretoStatus",
+      "fieldValues": "NEW,RECEIVED,REQUESTED,PENDING,SPECAUTH,DUPLICATE,COMPLETE,NODATA,READY,RETRY_PERSON,RETRY_DOCUMENT,RETRY_UPDATESTATUS,ERROR",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "claretoOrganizationId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "documentId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "documentName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "documentType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "documentDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "documentStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ccdaDocStoreGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ecmPdfGuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "retryCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "lastModifiedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "claretoOrganization",
+      "otherEntityRelationshipName": "claretoDocument",
+      "relationshipName": "claretoOrganization",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210201194748",
+  "entityTableName": "clareto_document",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "ehdClareto610",
+  "applications": "*",
+  "microserviceName": "ehdClareto610"
+}
